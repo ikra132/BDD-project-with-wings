@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Assignment Error</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .modal {
+            background: white;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            background-color: #f8d7da;
+        }
+        
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #721c24;
+        }
+        
+        .modal-subtitle {
+            font-size: 14px;
+            color: #721c24;
+            margin-top: 5px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #721c24;
+        }
+        
+        .modal-body {
+            padding: 30px 20px;
+        }
+        
+        .error-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #f8d7da;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: #721c24;
+        }
+        
+        .error-message {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .error-details {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .current-assignment {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            border-left: 4px solid #333;
+        }
+        
+        .assignment-title {
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 15px;
+        }
+        
+        .assignment-details {
+            display: flex;
+            align-items: center;
+        }
+        
+        .building-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: #e9e9e9;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 18px;
+        }
+        
+        .room-info {
+            flex: 1;
+        }
+        
+        .room-number {
+            font-weight: 500;
+            margin-bottom: 2px;
+            color: #333;
+        }
+        
+        .building-name {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .modal-footer {
+            padding: 15px 20px;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+        
+        .modal-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="modal">
+        <div class="modal-header">
+            <div class="modal-title">Room Selection Error</div>
+            <div class="modal-subtitle">Unable to select room</div>
+            <button class="close-btn">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="error-icon">!</div>
+            <div class="error-message">You already have a room assignment</div>
+            <div class="error-details">
+                You cannot select Room 203 because you already have an active room assignment. If you wish to change rooms, please cancel your current assignment first.
+            </div>
+            
+            <div class="current-assignment">
+                <div class="assignment-title">Your Current Assignment:</div>
+                <div class="assignment-details">
+                    <div class="building-icon">🏢</div>
+                    <div class="room-info">
+                        <div class="room-number">Room 415</div>
+                        <div class="building-name">West Hall, Floor 4 | Single Room</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="modal-btn">Return to Dashboard</button>
+        </div>
+    </div>
+</body>
+</html>

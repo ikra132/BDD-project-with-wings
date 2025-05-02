@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room 203 Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .modal {
+            background: white;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+        
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .modal-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .occupancy-info {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+            text-align: right;
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .room-layout {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .roommate-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .roommate-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #eee;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+        
+        .roommate-info {
+            flex: 1;
+        }
+        
+        .roommate-name {
+            font-weight: 500;
+            margin-bottom: 2px;
+            color: #333;
+        }
+        
+        .roommate-major {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .modal-footer {
+            padding: 15px 20px;
+            text-align: center;
+        }
+        
+        .modal-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="modal">
+        <div class="modal-header">
+            <div class="modal-title">Room 203</div>
+            <div class="modal-subtitle">East Hall, Floor 2 | Double Room</div>
+            <button class="close-btn">×</button>
+            <div class="occupancy-info">1 of 2 beds occupied</div>
+        </div>
+        <div class="modal-body">
+            <div class="room-layout">
+                <span>Room Layout: </span>
+                <span>100sq • 50sq</span>
+            </div>
+            
+            <div class="section-title">Current Roommate</div>
+            
+            <div class="roommate-list">
+                <div class="roommate-item">
+                    <div class="avatar">A</div>
+                    <div class="roommate-info">
+                        <div class="roommate-name">Alex Johnson</div>
+                        <div class="roommate-major">Computer Science</div>
+                    </div>
+                </div>
+                <div class="roommate-item">
+                    <div class="avatar">K</div>
+                    <div class="roommate-info">
+                        <div class="roommate-name">Khouli algo</div>
+                        <div class="roommate-major">Computer Science</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="modal-btn">Select This Room</button>
+        </div>
+    </div>
+</body>
+</html>
