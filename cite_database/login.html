@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Residence Portal</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container">
+        
+        <h1> Welcome to the University<br><span>residence portal</span></h1>
+
+        <div class="login-box">
+            <h2>Sign in</h2>
+            <form action="../backend/login.php" method="POST">
+                <label for="student">Student number</label>
+                <input type="text" id="student" name="student_id" placeholder="e.g. 2233223322" required>
+            
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="" required>
+            
+                <button type="submit">Connect</button>
+            
+                <a href="#">Forgot a password?</a>
+            </form>
+           
+            
+            
+            <script>
+                // Check for login error in URL
+                if (window.location.search.includes('error=1')) {
+                    alert('Invalid student number or password. Please try again.');
+                }
+            </script>
+        </div>
+    </div>
+</body>
+</html>

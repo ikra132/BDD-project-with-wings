@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Room</title>
+    <link rel="stylesheet" href="room.css">
+</head>
+<body>
+    <header>
+        <div class="logo">🏠 University Residence Portal</div>
+        <button class="profile-btn" type="button" onclick="location.href='Backend/logout.php'">Log out</button>
+    </header>
+
+    <main>
+        <h1>Select Your Room</h1>
+        <p>Choose from available accommodation for the upcoming semester</p>
+
+        <div class="main-container">
+            <!-- Sidebar for filters -->
+            <aside class="sidebar">
+                <h3>Choose the Wing</h3>
+                <button class="floor-btn" type="button" onclick="filterRooms(1)">Wing 1</button>
+                <button class="floor-btn" type="button" onclick="filterRooms(2)">Wing 2</button>
+                <button class="floor-btn" type="button" onclick="filterRooms(3)">Wing 3</button>
+            </aside>
+
+            <aside class="sidebar">
+                <h3>Filter by Floor</h3>
+                <button class="floor-btn" type="button" onclick="filterByFloor(1)">Level 1</button>
+                <button class="floor-btn" type="button" onclick="filterByFloor(2)">Level 2</button>
+                <button class="floor-btn" type="button" onclick="filterByFloor(3)">Level 3</button>
+            </aside>
+
+            <div class="room-grid" id="roomGrid">
+                <!-- Rooms will be loaded here dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentPavilion = 1;
+        let currentFloor = 1;
+
+        function filterRooms(pavilionId) {
+            currentPavilion = pavilionId;
+            loadRooms();
+        }
+
+        function filterByFloor(floorNumber) {
+            currentFloor = floorNumber;
+            loadRooms();
+        }
+
+        function loadRooms() {
+            fetch(`Backend/get_rooms.php?pavilion_id=${currentPavilion}&floor_number=${currentFloor}`)
+                .then(response => response.json())
+                .then(data => {
+                    const roomGrid = document.getElementById('roomGrid');
+                    roomGrid.innerHTML = '';
+
+                    data.rooms.forEach(room => {
+                        const roomCard = createRoomCard(room);
+                        roomGrid.appendChild(roomCard);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading rooms:', error);
+                });
+        }
+
+        function createRoomCard(room) {
+            const card = document.createElement('div');
+            card.className = 'room-card';
+            
+            const occupancy = room.current_occupants;
+            const status = occupancy === 0 ? 'available' : 'limited';
+            const statusText = occupancy === 0 ? 'Fully Available' : 'Limited Slots';
+
+            card.innerHTML = `
+                <div class="room-header">
+                    <h3>Room ${room.room_number}</h3>
+                    <span class="status ${status}">${statusText}</span>
+                </div>
+                <ul class="features">
+                    <li>${room.pavilion_name}, Level ${room.floor_number}</li>
+                    <li>${room.room_type}</li>
+                </ul>
+                <div class="actions">
+                    <button class="details-btn" onclick="viewRoomDetails(${room.room_id})">View Details</button>
+                    <form method="POST" action="Backend/room.php">
+                        <input type="hidden" name="room_id" value="${room.room_id}">
+                        <button class="select-btn" type="submit">Select Room</button>
+                    </form>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        function viewRoomDetails(roomId) {
+            window.location.href = `view/view1.html?room_id=${roomId}`;
+        }
+
+        // Load rooms when page loads
+        document.addEventListener('DOMContentLoaded', loadRooms);
+    </script>
+</body>
+</html>

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta charset="UTF-8">
     <title>Select Your Room </title>
     <link rel="stylesheet" href="select.css">
@@ -16,8 +18,7 @@
         <p>Choose from available accommodation for the upcoming semester</p>
 
         <div class="main-container">
-
-            <aside class="sidebar">
+            <form method="GET" action="section.php"></form>
                 <h3>choose the wing</h3>
                 <button class="floor-btn" type="button" onclick="location.href='select1.html'">wing 1</button>
                 <button class="floor-btn" type="button" onclick="location.href='../pavion2/select4.html'">wing 2</button>
@@ -30,7 +31,7 @@
                 <button class="floor-btn" type="button" onclick="location.href='select2.html'">Level 2</button>
                 <button class="floor-btn" type="button" onclick="location.href='select3.html'">Level 3</button>
             </aside>
-
+            </form>
         <div class="room-grid">
             <!-- Example Room Card -->
             <div class="room-card">
@@ -173,6 +174,39 @@
 
             
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                fetch('../backend/get_dashboard_data.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        // Update user info
+                        document.getElementById('user-name').textContent = data.user_name;
+                        
+                        // Update room assignment info if exists
+                        if (data.assignment) {
+                            document.getElementById('room-info').innerHTML = `
+                                <h3>Your Room</h3>
+                                <p>${data.assignment.pavilion_name}, Floor ${data.assignment.floor_number}</p>
+                                <p>Room ${data.assignment.room_number}</p>
+                                <p>Assigned on: ${new Date(data.assignment.date_assigned).toLocaleDateString()}</p>
+                            `;
+                            
+                            // Update roommates if any
+                            if (data.roommates.length > 0) {
+                                let roommatesHTML = '<h4>Roommates</h4><ul>';
+                                data.roommates.forEach(roommate => {
+                                    roommatesHTML += `<li>${roommate.full_name} (${roommate.field_of_study})</li>`;
+                                });
+                                roommatesHTML += '</ul>';
+                                document.getElementById('roommates').innerHTML = roommatesHTML;
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error loading dashboard data:', error);
+                    });
+            });
+            </script>
     </main>
 </body>
 </html>
