@@ -72,3 +72,9 @@ button:hover {
     color: #555;
     text-decoration: none;
 }
+
+.error-message {
+    display: none;
+    color: red;
+    margin-bottom: 10px;
+}
