@@ -33,7 +33,8 @@ INSERT INTO students (student_id, full_name, email, field_of_study, password) VA
 (232331254036, 'Leila Saadi', 'leila.saadi@univ-tlemcen.dz', 'Chemistry', SHA2('leila123', 256)),
 (232331254038, 'Soraya Hamidouche', 'soraya.hamidouche@univ-bejaia.dz', 'Biology', SHA2('soraya789', 256)),
 (232331254040, 'Yasmina Khettab', 'yasmina.k@univ-oran.dz', 'Computer Science', SHA2('yasmina123', 256)),
-(232331254042, 'Zahra Bensaad', 'zahra.b@univ-blida.dz', 'Physics', SHA2('zahra456', 256));
+(232331254042, 'Chenaf ikram', 'ikram.b@univ-blida.dz', 'Computer Science', SHA2('ikrama456', 256));
+
 
 -- Assign female students to rooms
 INSERT INTO room_assignments (assignment_id, student_id, room_id, date_assigned) VALUES
